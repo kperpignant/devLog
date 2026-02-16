@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>devLog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <a href="index.html"><h1>devLog</h1></a>
+    </header>
+    <ul class="post-list" id="post-list"></ul>
+  </main>
+  <script>
+    fetch('posts.json')
+      .then(res => res.json())
+      .then(posts => {
+        const ul = document.getElementById('post-list');
+        posts.forEach(post => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <a href="post.html?id=${encodeURIComponent(post.file)}">${escapeHtml(post.title)}</a>
+            <div class="date">${escapeHtml(post.date)}</div>
+          `;
+          ul.appendChild(li);
+        });
+      })
+      .catch(err => {
+        document.getElementById('post-list').innerHTML = '<li>Failed to load posts.</li>';
+      });
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>
