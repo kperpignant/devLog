@@ -16,6 +16,7 @@ jobs:
           mkdir -p deploy
           cp index.html post.html style.css posts.json deploy/
           cp -r posts deploy/
+          [ -d media ] && cp -r media deploy/ || true
 
       - name: Push to kperpignant.github.io
         uses: cpina/github-action-push-to-another-repository@main
