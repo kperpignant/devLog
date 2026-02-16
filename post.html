@@ -15,8 +15,7 @@
     <article id="content"></article>
   </main>
   <script>
-    const params = new URLSearchParams(location.search);
-    const slug = params.get('id');
+    const slug = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
     const contentEl = document.getElementById('content');
 
     if (!slug) {

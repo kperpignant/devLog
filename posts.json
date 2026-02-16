@@ -1,4 +1,5 @@
 [
   { "title": "Example Post", "date": "2025-02-16", "file": "example-post" },
-  { "title": "Hello World", "date": "2025-02-15", "file": "hello-world" }
+  { "title": "Hello World", "date": "2025-02-15", "file": "hello-world" },
+  { "title": "First Test Post", "date": "2025-02-16", "file": "TestOne" }
 ]
