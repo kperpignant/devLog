@@ -11,24 +11,22 @@ jobs:
       - name: Checkout devLog
         uses: actions/checkout@v4
 
-      - name: Deploy to kperpignant.github.io
-        env:
-          DEPLOY_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+      - name: Prepare deploy folder
         run: |
-          git clone https://${DEPLOY_TOKEN}@github.com/kperpignant/kperpignant.github.io.git pages-repo
-          cd pages-repo
+          mkdir -p deploy
+          cp index.html post.html style.css posts.json deploy/
+          cp -r posts deploy/
 
-          rm -rf devlog
-          mkdir -p devlog
-          cp ../index.html ../post.html ../style.css ../posts.json devlog/
-          cp -r ../posts devlog/
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add devlog
-          if git diff --staged --quiet; then
-            echo "No changes to deploy"
-          else
-            git commit -m "Update devlog from devLog"
-            git push
-          fi
+      - name: Push to kperpignant.github.io
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+        with:
+          source-directory: deploy
+          destination-github-username: kperpignant
+          destination-repository-name: kperpignant.github.io
+          target-directory: devlog
+          user-email: github-actions[bot]@users.noreply.github.com
+          user-name: github-actions[bot]
+          target-branch: main
+          commit-message: Update devlog from devLog
