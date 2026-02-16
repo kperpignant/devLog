@@ -21,7 +21,7 @@
         posts.forEach(post => {
           const li = document.createElement('li');
           li.innerHTML = `
-            <a href="post.html?id=${encodeURIComponent(post.file)}">${escapeHtml(post.title)}</a>
+            <a href="post.html#${encodeURIComponent(post.file)}">${escapeHtml(post.title)}</a>
             <div class="date">${escapeHtml(post.date)}</div>
           `;
           ul.appendChild(li);
