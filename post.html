@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>devLog</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <a href="index.html"><h1>devLog</h1></a>
+    </header>
+    <article id="content"></article>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const slug = params.get('id');
+    const contentEl = document.getElementById('content');
+
+    if (!slug) {
+      contentEl.innerHTML = '<p>No post specified. <a href="index.html">Back to home</a>.</p>';
+    } else {
+      fetch(`posts/${encodeURIComponent(slug)}.md`)
+        .then(res => {
+          if (!res.ok) throw new Error('Not found');
+          return res.text();
+        })
+        .then(md => {
+          contentEl.innerHTML = marked.parse(md);
+          document.title = contentEl.querySelector('h1')?.textContent + ' — devLog' || 'devLog';
+        })
+        .catch(() => {
+          contentEl.innerHTML = '<p>Post not found. <a href="index.html">Back to home</a>.</p>';
+        });
+    }
+  </script>
+</body>
+</html>
