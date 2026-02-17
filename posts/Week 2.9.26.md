@@ -29,7 +29,7 @@ I followed that up with this blog website.
 
 The idea behind this devLog is that I can easily update it and have it 
 connected to my portfolio, without having to make direct changes
-to it.
+to it or host the posts somewhere.
 
 The way it works is:
     1. Create a post md
