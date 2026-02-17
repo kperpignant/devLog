@@ -31,6 +31,16 @@ The idea behind this devLog is that I can easily update it and have it
 connected to my portfolio, without having to make direct changes
 to it.
 
+The way it works is:
+    1. Create a post md
+    2. Make sure its in the posts folder
+    3. Add it to the posts.json
+    4. Push the changes to github
+    5. Git actions pushes changes to my portfolio
+    6. Give it a few minutes
+    7. ????
+    8. Profit!
+
 So far so good, all the projects are up and hosted on github.
 
 I did run into some issues this week, such as breaking my Operating System, oops.
