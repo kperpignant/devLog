@@ -32,14 +32,14 @@ connected to my portfolio, without having to make direct changes
 to it or host the posts somewhere.
 
 The way it works is:
-    1. Create a post md
-    2. Make sure its in the posts folder
-    3. Add it to the posts.json
-    4. Push the changes to github
-    5. Git actions pushes changes to my portfolio
-    6. Give it a few minutes
-    7. ????
-    8. Profit!
+1. Create a post md
+2. Make sure its in the posts folder
+3. Add it to the posts.json
+4. Push the changes to github
+5. Git actions pushes changes to my portfolio
+6. Give it a few minutes
+7. ????
+8. Profit!
 
 So far so good, all the projects are up and hosted on github.
 
