@@ -9,11 +9,13 @@ Except maybe the Valid Palindrome one. Although that's probably because I've wor
 
 Though this one was a bit more complicated:
 
-isPalindrome(s) {
-        let flipped = s.toLowerCase().replace(/ /g, "").replace(/[^a-zA-Z0-9\s]/g, '').split('').reverse('').join('')
-        let cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '')
-        return cleaned === flipped ? true : false
-    }
+isPalindrome(s) 
+{
+*    let flipped = s.toLowerCase().replace(/ /g, "").replace(/[^a-zA-Z0-9\s]/g, '').split('').reverse('').join('')
+*    let cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '')
+*    return cleaned === flipped ? true : false
+}
+
 Had to use regex this time around, I could probably remove one of those replace() too.
 In the end learning things like this really comes down to repetition, so I've just got to keep grinding.
 
